@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<p>Aqui você pode acessar funcionalidades como:
+<ul>
+    <li><a th:href="@{/usuarios/emergencia}">Pedir ajuda</a></li>
+    <li><a th:href="@{/usuarios/match}">Ver Matches</a></li></li>
+</ul>
+</p>
+
+</body>
+</html>

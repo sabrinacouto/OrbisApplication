@@ -1,0 +1,66 @@
+package com.example.orbis_gs.controller;
+
+import com.example.orbis_gs.dto.UsuarioDTO;
+import com.example.orbis_gs.model.Usuario;
+import com.example.orbis_gs.repository.UsuarioRepository;
+import com.example.orbis_gs.service.UsuarioService;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Optional;
+
+@Controller
+@RequiredArgsConstructor
+public class HomeController {
+    private final UsuarioService usuarioService;
+
+    private final UsuarioRepository usuarioRepository;
+
+    @GetMapping("/home")
+    public String showHome(@AuthenticationPrincipal UserDetails userDetails, Model model) {
+        if (userDetails == null) {
+            return "redirect:/login";
+        }
+
+        String email = userDetails.getUsername();
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
+
+        if (usuarioOpt.isEmpty()) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute("usuario", usuarioOpt.get());
+        return "auth/home";
+    }
+
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "auth/login";
+    }
+
+    @PostMapping("/login")
+    public String processLogin(@RequestParam String email,
+                               @RequestParam String senha,
+                               HttpSession session,
+                               Model model) {
+
+        UsuarioDTO usuario = usuarioService.authenticateUser(email, senha);
+
+        if (usuario != null) {
+
+            session.setAttribute("usuarioLogadoId", usuario.getUsuarioId());
+
+            return "redirect:auth/home";
+        } else {
+            model.addAttribute("erro", "E-mail ou senha inválidos.");
+            return "auth/login";
+        }
+    }
+}
