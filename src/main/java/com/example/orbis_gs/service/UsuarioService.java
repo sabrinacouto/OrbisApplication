@@ -27,6 +27,7 @@ public class UsuarioService {
         dto.setNome(usuario.getNome());
         dto.setSobrenome(usuario.getSobrenome());
         dto.setCep(usuario.getCep());
+        dto.setEmail(usuario.getEmail());
         return dto;
     }
 
@@ -56,10 +57,22 @@ public class UsuarioService {
             throw new EmailAlreadyExistsException("Já existe um usuário com este e-mail.");
         }
 
+        if (usuarioDTO.getEmail() != null) {
+            usuario.setEmail(usuarioDTO.getEmail());
+        }
         if (usuarioDTO.getNome() != null) usuario.setNome(usuarioDTO.getNome());
         if (usuarioDTO.getSobrenome() != null) usuario.setSobrenome(usuarioDTO.getSobrenome());
         if (usuarioDTO.getCep() != null) usuario.setCep(usuarioDTO.getCep());
         if (usuarioDTO.getSenha() != null) usuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
+
+
+        System.out.println("Atualizando usuário ID: " + id);
+        System.out.println("Novo nome: " + usuarioDTO.getNome());
+        System.out.println("Novo sobrenome: " + usuarioDTO.getSobrenome());
+        System.out.println("Novo email: " + usuarioDTO.getEmail());
+        System.out.println("Novo cep: " + usuarioDTO.getCep());
+
+
 
         usuarioRepository.save(usuario);
     }
@@ -89,12 +102,20 @@ public class UsuarioService {
         if (usuarioOpt.isPresent() && passwordEncoder.matches(senha, usuarioOpt.get().getSenha())) {
             Usuario usuario = usuarioOpt.get();
             UsuarioDTO dto = new UsuarioDTO();
-            dto.setUsuarioId(usuario.getUsuarioId());
+            dto.setUsuarioId(usuario.getUsuarioId()); // <-- isso é essencial!
             dto.setNome(usuario.getNome());
             dto.setEmail(usuario.getEmail());
+            dto.setSobrenome(usuario.getSobrenome());
+            dto.setCep(usuario.getCep());
             return dto;
         }
         return null;
+    }
+
+    public UsuarioDTO getUsuarioByEmail(String email) {
+        Usuario usuario = usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado com e-mail: " + email));
+        return convertToDTO(usuario);
     }
 
 }

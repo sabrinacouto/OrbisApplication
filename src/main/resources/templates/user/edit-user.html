@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title th:text="#{usuario.editar.titulo}">Editar Usuário</title>
-    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <meta charset="UTF-8" />
+    <title th:text="#{editarPerfil.titulo}">Editar Perfil</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
-<body>
+<body class="edit-profile-body">
 
-<!-- Header -->
-<div th:insert="~{fragments/header-login :: header-login}"></div>
+<div th:replace="~{fragments/header-login :: header-login}"></div>
 
-<h1 th:text="#{usuario.editar.titulo}">Editar Usuário</h1>
-<form th:action="@{/usuario/editarUsuario/{id}(id=${usuario.usuarioId})}" th:object="${usuario}" method="post">
-    <input type="hidden" name="_method" value="patch"/>
-    <div>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" th:field="*{nome}" required />
-    </div>
-    <div>
-        <label for="sobrenome">Sobrenome:</label>
-        <input type="text" id="sobrenome" th:field="*{sobrenome}" required />
-    </div>
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" th:field="*{email}" required />
-    </div>
-    <div>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" th:field="*{senha}" required />
-    </div>
-    <div>
-        <label for="cep">CEP:</label>
-        <input type="text" id="cep" th:field="*{cep}" required />
+<div class="form-container">
+<main class="edit-profile-container">
+
+    <h1 class="edit-profile-title" th:text="#{editarPerfil.titulo}">Editar Perfil</h1>
+
+    <div th:if="${error}" class="edit-profile-error error">
+        <p th:text="${error}">Erro</p>
     </div>
 
-    <button type="submit">Salvar Alterações</button>
-</form>
+    <div th:if="${success}" class="edit-profile-success success">
+        <p th:text="${success}">Sucesso</p>
+    </div>
 
-<form th:action="@{/usuarios/deletarUsuario/{id}(id=${usuarioDTO.usuarioId})}" method="post"
-      onsubmit="return confirm('Tem certeza que deseja deletar sua conta?');">
-    <input type="hidden" name="_method" value="delete"/>
-    <button type="submit" style="background-color: red; color: white;">Deletar Conta</button>
-</form>
+    <form
+            th:action="@{/usuarios/editar/{id}(id=${usuario.usuarioId})}"
+            method="post"
+            th:object="${usuario}"
+            class="edit-profile-form"
+    >
+        <input type="hidden" name="_method" value="patch" />
+        <input type="hidden" th:field="*{usuarioId}" />
 
+        <div class="form-group">
+            <label for="nome" th:text="#{editarPerfil.nome}">Nome:</label>
+            <input id="nome" type="text" th:field="*{nome}" required class="input-text"/>
+        </div>
+
+        <div class="form-group">
+            <label for="sobrenome" th:text="#{editarPerfil.sobrenome}">Sobrenome:</label>
+            <input id="sobrenome" type="text" th:field="*{sobrenome}" required class="input-text"/>
+        </div>
+
+        <div class="form-group">
+            <label for="email" th:text="#{editarPerfil.email}">Email:</label>
+            <input id="email" type="email" th:field="*{email}" required class="input-text"/>
+        </div>
+
+        <div class="form-group">
+            <label for="cep" th:text="#{editarPerfil.cep}">CEP:</label>
+            <input id="cep" type="text" th:field="*{cep}" required class="input-text"/>
+        </div>
+
+        <div class="form-group">
+            <label for="senha" th:text="#{editarPerfil.novaSenha}">Nova senha:</label>
+            <input id="senha" type="password" th:field="*{senha}" class="input-text"/>
+        </div>
+
+        <button type="submit" class="btn-submit" th:text="#{editarPerfil.salvarAlteracoes}">
+            Salvar alterações
+        </button>
+    </form>
+
+</main>
+</div>
 
 </body>
 </html>

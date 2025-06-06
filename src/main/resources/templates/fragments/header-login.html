@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" th:href="@{/css/styles.css}">
+<head>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
 <body>
 <div th:fragment="header-login">
     <header class="header-orbis">
@@ -16,8 +18,13 @@
                     <li><a th:href="@{/match}" th:text="#{menu.match}">Match</a></li>
                     <li><a th:href="@{/doacoes}" th:text="#{menu.doacoes}">Doações</a></li>
                     <li><a th:href="@{/emergencia}" th:text="#{menu.emergencias}">Emergências</a></li>
-                    <a th:href="@{/usuarios/editarUsuario/{id}(id=${usuarioDTO.usuarioId})}">Editar</a>
-                    <li><a th:href="@{/usuario/logout}" th:text="#{menu.logout}">Sair</a></li>
+
+                    <li>
+                        <a th:href="@{/usuarios/editar/{id}(id=${usuario.usuarioId})}"
+                           th:text="#{menu.editar-usuario}">
+                            Editar Usuário
+                        </a>
+                    <li><a th:href="@{/usuarios/logout}" th:text="#{menu.logout}">Sair</a></li>
                 </ul>
             </nav>
         </div>

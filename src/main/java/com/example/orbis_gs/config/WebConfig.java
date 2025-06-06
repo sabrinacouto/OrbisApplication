@@ -1,5 +1,6 @@
 package com.example.orbis_gs.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,9 @@ import java.util.Locale;
 
 @Configuration
 public class WebConfig  implements WebMvcConfigurer  {
+
+    @Autowired
+    private UsuarioInterceptor usuarioInterceptor;
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
@@ -53,9 +57,12 @@ public class WebConfig  implements WebMvcConfigurer  {
         return lci;
     }
 
+
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(usuarioInterceptor)
+                .excludePathPatterns("/css/**", "/js/**", "/images/**"); // opcional: excluir recursos estáticos
     }
 
     @Bean

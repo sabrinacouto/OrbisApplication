@@ -44,25 +44,4 @@ public class HomeController {
     }
 
 
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "auth/login";
-    }
-
-    @PostMapping("/login")
-    public String processLogin(@RequestParam("username") String email,
-                               @RequestParam("password") String senha,
-                               HttpSession session,
-                               Model model) {
-
-        UsuarioDTO usuario = usuarioService.authenticateUser(email, senha);
-
-        if (usuario != null) {
-            session.setAttribute("usuarioLogadoId", usuario.getUsuarioId());
-            return "redirect:/auth/home";
-        } else {
-            model.addAttribute("erro", "E-mail ou senha inválidos.");
-            return "auth/login";
-        }
-    }
 }

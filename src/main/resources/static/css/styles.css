@@ -325,3 +325,151 @@ margin-top: 2rem;
     align-items: center;
     justify-content: center;
 }
+
+.success {
+    color: green;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.error {
+    color: red;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+
+.edit-profile-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.edit-profile-container {
+  background-color: #fff;
+  color: #333;
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(230, 0, 35, 0.3);
+  max-width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.edit-profile-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #e60023; /* vermelho forte */
+  text-align: center;
+}
+
+/* Mensagens de erro e sucesso */
+.error, .edit-profile-error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.success, .edit-profile-success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Formulário */
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+
+.input-text {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 2px solid #ff7e5f;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-text:focus {
+  border-color: #e60023;
+  outline: none;
+  box-shadow: 0 0 8px rgba(230, 0, 35, 0.6);
+}
+
+/* Botão */
+.btn-submit {
+  background-color: #e60023;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.9rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-submit:hover {
+  background-color: #cc001f;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .edit-profile-container {
+    padding: 2rem 1.5rem;
+    margin: 1rem;
+  }
+
+  .edit-profile-title {
+    font-size: 1.6rem;
+  }
+
+  .btn-submit {
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+
+.form-group input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+
+
