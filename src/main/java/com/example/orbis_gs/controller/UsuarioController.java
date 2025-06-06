@@ -74,7 +74,6 @@ public class UsuarioController {
         if (!usuarioLogadoDTO.getUsuarioId().equals(id)) return "redirect:/home";
 
         UsuarioDTO usuarioParaEdicao = usuarioService.getUsuarioById(id);
-        System.out.println("usuarioParaEdicao ID = " + usuarioParaEdicao.getUsuarioId());
         model.addAttribute("usuario", usuarioParaEdicao);
         return "user/edit-user";
     }
@@ -111,5 +110,37 @@ public class UsuarioController {
             model.addAttribute("error", "Erro inesperado. Tente novamente mais tarde.");
             return "user/edit-user";
         }
+    }
+
+
+    @DeleteMapping("/deletarUsuario/{id}")
+    public String deleteUsuario(@PathVariable("id") Long id,
+                                @AuthenticationPrincipal UserDetails userDetails,
+                                HttpSession session,
+                                Model model) {
+
+        if (userDetails == null) {
+            model.addAttribute("error", "Usuário não logado.");
+            return "redirect:/usuarios/login";
+        }
+
+        String emailLogado = userDetails.getUsername();
+        UsuarioDTO usuarioLogadoDTO = usuarioService.getUsuarioByEmail(emailLogado);
+
+        if (usuarioLogadoDTO == null || !usuarioLogadoDTO.getUsuarioId().equals(id)) {
+            model.addAttribute("error", "Acesso negado.");
+            return "redirect:/home";
+        }
+
+        usuarioService.deleteUsuario(id);
+        session.invalidate();
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login";
     }
 }
