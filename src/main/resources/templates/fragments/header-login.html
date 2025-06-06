@@ -1,62 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/styles.css}">
 <body>
-
-
-<div th:fragment="header">
+<div th:fragment="header-login">
     <header class="header-orbis">
         <div class="header-content">
             <div class="logo-header">
-                <img th:src="@{/assets/orbis-logo.png}" alt="Orbis Logo" />
+                <img th:src="@{images/orbis.png}" alt="Orbis Logo" />
+                <span class="app-name" th:text="#{app.name}">Orbis</span>
             </div>
 
             <nav class="nav-menu">
                 <ul>
                     <li><a th:href="@{/home}" th:text="#{menu.home}">Home</a></li>
-                    <li><a th:href="@{/sos}" th:text="#{menu.sos}">SOS</a></li>
+                    <li><a th:href="@{/match}" th:text="#{menu.match}">Match</a></li>
                     <li><a th:href="@{/doacoes}" th:text="#{menu.doacoes}">Doações</a></li>
-                    <li><a th:href="@{/emergencias}" th:text="#{menu.emergencias}">Emergências</a></li>
+                    <li><a th:href="@{/emergencia}" th:text="#{menu.emergencias}">Emergências</a></li>
+                    <li><a th:href="@{/edit-user}" th:text="#{menu.editar-usuario}">Editar Usuário</a></li>
                     <li><a th:href="@{/usuario/logout}" th:text="#{menu.logout}">Sair</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 </div>
-
-<style>
-    .header-orbis {
-        background-color: #000; /* preto */
-        padding: 10px 20px;
-        border-bottom: 3px solid #e30613; /* vermelho Orbis */
-    }
-    .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .logo-header img {
-        height: 50px;
-    }
-    .nav-menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        gap: 20px;
-    }
-    .nav-menu ul li a {
-        color: #fff; /* texto branco */
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        transition: color 0.3s ease;
-    }
-    .nav-menu ul li a:hover {
-        color: #e30613;
-    }
-</style>
-
 </body>
 </html>

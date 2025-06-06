@@ -6,7 +6,9 @@ import com.example.orbis_gs.repository.UsuarioRepository;
 import com.example.orbis_gs.service.UsuarioService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,9 +38,11 @@ public class HomeController {
             return "redirect:/login";
         }
 
-        model.addAttribute("usuario", usuarioOpt.get());
+        Usuario usuario = usuarioOpt.get();
+        model.addAttribute("usuario", usuario);
         return "auth/home";
     }
+
 
     @GetMapping("/login")
     public String showLoginPage() {
@@ -46,18 +50,16 @@ public class HomeController {
     }
 
     @PostMapping("/login")
-    public String processLogin(@RequestParam String email,
-                               @RequestParam String senha,
+    public String processLogin(@RequestParam("username") String email,
+                               @RequestParam("password") String senha,
                                HttpSession session,
                                Model model) {
 
         UsuarioDTO usuario = usuarioService.authenticateUser(email, senha);
 
         if (usuario != null) {
-
             session.setAttribute("usuarioLogadoId", usuario.getUsuarioId());
-
-            return "redirect:auth/home";
+            return "redirect:/auth/home";
         } else {
             model.addAttribute("erro", "E-mail ou senha inválidos.");
             return "auth/login";

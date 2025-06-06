@@ -5,27 +5,29 @@
     <title th:text="#{usuario.login.titulo}">Login</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
+<body class="login-body">
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="login-container">
+    <h1 th:text="#{usuario.login.titulo}" class="login-title">Login de Usuário</h1>
 
-<h1 th:text="#{usuario.login.titulo}">Login de Usuário</h1>
-<p th:if="${erro}" th:text="${erro}" style="color: red;"></p>
+    <p th:if="${erro}" th:text="${erro}" class="login-error"></p>
 
-<form th:action="@{/usuarios/login}" method="post">
-    <div>
-        <label for="username" th:text="#{usuario.email}">Email:</label>
-        <input type="text" id="username" name="username" required />
-    </div>
-    <div>
-        <label for="password" th:text="#{usuario.senha}">Senha:</label>
-        <input type="password" id="password" name="password" required />
-    </div>
-    <div>
-        <button type="submit" th:text="#{usuario.botao.entrar}">Entrar</button>
+    <form th:action="@{/usuarios/login}" method="post" class="login-form">
+        <div class="form-group">
+            <label for="username" th:text="#{usuario.email}">Email:</label>
+            <input type="text" id="username" name="username" required />
+        </div>
 
-    </div>
-</form>
+        <div class="form-group">
+            <label for="password" th:text="#{usuario.senha}">Senha:</label>
+            <input type="password" id="password" name="password" required />
+        </div>
 
-<a href="/oauth2/authorization/google">Entrar com Google</a>
+        <div class="form-group">
+            <button type="submit" th:text="#{usuario.botao.entrar}" class="login-button">Entrar</button>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

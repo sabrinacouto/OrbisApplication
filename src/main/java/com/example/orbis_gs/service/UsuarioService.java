@@ -27,8 +27,6 @@ public class UsuarioService {
         dto.setNome(usuario.getNome());
         dto.setSobrenome(usuario.getSobrenome());
         dto.setCep(usuario.getCep());
-        dto.setLatitude(usuario.getLatitude());
-        dto.setLongitude(usuario.getLongitude());
         return dto;
     }
 
@@ -43,8 +41,6 @@ public class UsuarioService {
         usuario.setSobrenome(usuarioDTO.getSobrenome());
         usuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
         usuario.setCep(usuarioDTO.getCep());
-        usuario.setLatitude(usuarioDTO.getLatitude());
-        usuario.setLongitude(usuarioDTO.getLongitude());
         usuario.setEmail(usuarioDTO.getEmail());
 
         usuarioRepository.save(usuario);
@@ -63,8 +59,6 @@ public class UsuarioService {
         if (usuarioDTO.getNome() != null) usuario.setNome(usuarioDTO.getNome());
         if (usuarioDTO.getSobrenome() != null) usuario.setSobrenome(usuarioDTO.getSobrenome());
         if (usuarioDTO.getCep() != null) usuario.setCep(usuarioDTO.getCep());
-        if (usuarioDTO.getLatitude() != null) usuario.setLatitude(usuarioDTO.getLatitude());
-        if (usuarioDTO.getLongitude() != null) usuario.setLongitude(usuarioDTO.getLongitude());
         if (usuarioDTO.getSenha() != null) usuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
 
         usuarioRepository.save(usuario);
@@ -102,4 +96,5 @@ public class UsuarioService {
         }
         return null;
     }
+
 }

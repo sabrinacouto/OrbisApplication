@@ -10,24 +10,23 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usuarioId;
 
-    @NotBlank
+    @NotBlank(message = "O nome é obrigatório")
     private String nome;
 
-    @NotBlank
+    @NotBlank(message = "O email é obrigatório")
+    @Email(message = "O email deve ser válido")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "O sobrenome é obrigatório")
     private String sobrenome;
 
-    @NotBlank
+    @NotBlank(message = "A senha é obrigatória")
     private String senha;
-
-    private Double latitude;
-    private Double longitude;
 
     private String cep;
 }

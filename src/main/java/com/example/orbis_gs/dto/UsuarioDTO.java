@@ -9,7 +9,5 @@ public class UsuarioDTO {
     private String sobrenome;
     private String email;
     private String senha;
-    private Double latitude;
-    private Double longitude;
     private String cep;
 }

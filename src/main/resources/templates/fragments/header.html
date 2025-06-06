@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/styles.css}">
 <body>
-
 <div th:fragment="header">
     <header class="header-orbis">
         <div class="header-content">
             <div class="logo-header">
-                <img th:src="@{/assets/orbis-logo.png}" alt="Orbis Logo" />
+                <img th:src="@{images/orbis.png}" alt="Orbis Logo" />
                 <span class="app-name" th:text="#{app.name}">Orbis</span>
             </div>
 
@@ -19,69 +19,5 @@
         </div>
     </header>
 </div>
-
-<style>
-    .header-orbis {
-        background-color: #000; /* preto */
-        padding: 10px 20px;
-        border-bottom: 3px solid #e30613; /* vermelho Orbis */
-    }
-    .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    .logo-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .logo-header img {
-        height: 50px;
-    }
-    .app-name {
-        color: #e30613; /* vermelho */
-        font-size: 1.5rem;
-        font-weight: bold;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    .nav-menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        gap: 15px;
-    }
-    .nav-menu ul li a {
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 8px 16px;
-        border-radius: 4px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        cursor: pointer;
-    }
-    .btn-login {
-        color: #e30613;
-        border: 2px solid #e30613;
-        background-color: transparent;
-    }
-    .btn-login:hover {
-        background-color: #e30613;
-        color: #fff;
-    }
-    .btn-cadastro {
-        color: #fff;
-        background-color: #e30613;
-        border: 2px solid #e30613;
-    }
-    .btn-cadastro:hover {
-        background-color: transparent;
-        color: #e30613;
-    }
-</style>
-
 </body>
 </html>

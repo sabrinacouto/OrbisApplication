@@ -13,8 +13,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/usuarios/login", "/usuarios/cadastro", "/public/**").permitAll()
-                        .requestMatchers("/home", "/sos/**", "/doacoes/**", "/emergencias/**", "/match-ajuda/**")
+                        .requestMatchers("/", "/usuarios/login", "/usuarios/cadastro", "/css/**", "/js/**", "/images/**", "/webjars/**", "/public/**")
+                        .permitAll()
+                        .requestMatchers("/home", "/doacoes/", "/emergencias/", "/match-ajuda/")
                         .hasRole("USUARIO")
                         .anyRequest().authenticated()
                 )
@@ -23,10 +24,6 @@ public class SecurityConfig {
                         .loginProcessingUrl("/usuarios/login")
                         .defaultSuccessUrl("/home", true)
                         .permitAll()
-                )
-                .oauth2Login(oauth2 -> oauth2
-                        .loginPage("/usuarios/login") // mesma página de login
-                        .defaultSuccessUrl("/home", true)
                 )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/login?logout")

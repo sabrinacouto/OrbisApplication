@@ -1,50 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt">
 <head>
-    <meta charset="UTF-8" />
-    <title th:text="#{title}">Orbis</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 2rem;
-        }
-        h1 {
-            color: #e30613;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-        p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: auto;
-            margin-bottom: 2rem;
-        }
-        a.button {
-            background-color: #e30613;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        a.button:hover {
-            background-color: #a00209;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title th:text="#{landing.titulo}">Orbis GS</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
-<h1 th:text="#{title}">Orbis</h1>
-<p th:text="#{description}">Descrição da Orbis...</p>
+<div class="landing">
+    <h1 th:text="#{landing.bemvindo}">Bem-vindo ao Orbis</h1>
+    <p th:text="#{landing.descricao}">
+        Um aplicativo que conecta pessoas em situações de emergência com voluntários dispostos a ajudar.
+    </p>
 
-<a th:href="@{/?lang={lang}(lang=${#locale.language == 'pt' ? 'en' : 'pt'})}"
-   class="button"
-   th:text="#{button}">English</a>
+    <div class="features">
+        <div class="feature" th:text="#{landing.feature.sos}">Solicitação rápida de ajuda com um botão SOS.</div>
+        <div class="feature" th:text="#{landing.feature.comunidade}">Rede colaborativa de suporte comunitário.</div>
+        <div class="feature" th:text="#{landing.feature.voluntarios}">Voluntariado acessível e organizado.</div>
+    </div>
+
+    <a th:href="@{/login}" class="start-button" th:text="#{landing.botao.comecar}">Começar</a>
+</div>
 
 </body>
 </html>
