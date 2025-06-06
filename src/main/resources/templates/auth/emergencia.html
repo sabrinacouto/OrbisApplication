@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title th:text="#{emergencia.titulo}">Emergência</title>
 </head>
 <body>
+<div th:replace="~{fragments/header-login :: header-login}"></div>
+<h1 th:text="#{emergencia.titulo}">Emergência</h1>
 
+<form th:action="@{/recomendar}" method="post">
+    <label for="desejo" th:text="#{emergencia.label.descricao}">Descreva sua emergência ou necessidade:</label><br />
+    <textarea id="desejo" name="desejo" rows="4" cols="50" th:placeholder="#{emergencia.placeholder}" ></textarea><br />
+    <button type="submit" th:text="#{emergencia.botao}">Gerar recomendação</button>
+</form>
+
+<div th:if="${recomendacao}">
+    <h2 th:text="#{emergencia.titulo_recomendacao}">Recomendação:</h2>
+    <p th:text="${recomendacao}">Aqui aparecerá a recomendação da emergência.</p>
+</div>
 </body>
 </html>

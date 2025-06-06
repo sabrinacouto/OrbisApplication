@@ -210,11 +210,11 @@ body {
 
 .btn-login {
   border: 1px solid #e60023;
-  color: #e60023;
+  color: #ff7e5f;
 }
 
 .btn-login:hover {
-  background-color: #ffe6ea;
+  background-color: #e60023;
 }
 
 .btn-cadastro {

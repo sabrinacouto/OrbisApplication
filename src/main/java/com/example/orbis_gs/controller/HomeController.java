@@ -1,12 +1,9 @@
 package com.example.orbis_gs.controller;
 
-import com.example.orbis_gs.dto.UsuarioDTO;
 import com.example.orbis_gs.model.Usuario;
 import com.example.orbis_gs.repository.UsuarioRepository;
 import com.example.orbis_gs.service.UsuarioService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
