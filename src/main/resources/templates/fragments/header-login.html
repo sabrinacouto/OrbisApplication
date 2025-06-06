@@ -9,14 +9,15 @@
         <div class="header-content">
             <div class="logo-header">
                 <img th:src="@{/images/orbis.png}" alt="Orbis Logo" />
-                <span class="app-name" th:text="#{app.name}">Orbis</span>
+            </div>
+
+            <div class="language-selector">
+                <a href="?lang=pt">Português</a> | <a href="?lang=en">English</a>
             </div>
 
             <nav class="nav-menu">
                 <ul>
                     <li><a th:href="@{/home}" th:text="#{menu.home}">Home</a></li>
-                    <li><a th:href="@{/match}" th:text="#{menu.match}">Match</a></li>
-                    <li><a th:href="@{/doacoes}" th:text="#{menu.doacoes}">Doações</a></li>
                     <li><a th:href="@{/emergencia}" th:text="#{menu.emergencias}">Emergências</a></li>
 
                     <li>
@@ -25,6 +26,8 @@
                             Editar Usuário
                         </a>
                     <li><a th:href="@{/usuarios/logout}" th:text="#{menu.logout}">Sair</a></li>
+
+
                 </ul>
             </nav>
         </div>

@@ -52,7 +52,7 @@
         </div>
 
         <div class="form-group">
-            <label for="senha" th:text="#{editarPerfil.novaSenha}">Nova senha:</label>
+            <label for="senha" th:text="#{editarPerfil.novaSenha}">Senha:</label>
             <input id="senha" type="password" th:field="*{senha}" class="input-text"/>
         </div>
 
@@ -64,7 +64,7 @@
     <form th:action="@{/usuarios/deletarUsuario/{id}(id=${usuario.usuarioId})}" method="post"
           onsubmit="return confirm('Tem certeza que deseja deletar sua conta? Esta ação não pode ser desfeita.')">
         <input type="hidden" name="_method" value="delete"/>
-        <button type="submit" class="btn-delete" th:text="#{editarPerfil.deletarConta}">Deletar Conta</button>
+        <button type="submit"  class="btn-submit" th:text="#{editarPerfil.deletarConta}">Deletar Conta</button>
     </form>
 
 </main>

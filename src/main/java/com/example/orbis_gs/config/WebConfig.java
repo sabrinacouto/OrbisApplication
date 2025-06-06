@@ -57,13 +57,14 @@ public class WebConfig  implements WebMvcConfigurer  {
         return lci;
     }
 
-
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(localeChangeInterceptor());
         registry.addInterceptor(usuarioInterceptor)
-                .excludePathPatterns("/css/**", "/js/**", "/images/**"); // opcional: excluir recursos estáticos
+                .excludePathPatterns("/css/**", "/js/**", "/images/**");
     }
+
+
 
     @Bean
     public ResourceBundleMessageSource messageSource() {

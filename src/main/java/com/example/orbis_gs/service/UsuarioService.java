@@ -4,6 +4,7 @@ import com.example.orbis_gs.dto.UsuarioDTO;
 import com.example.orbis_gs.exceptions.EmailAlreadyExistsException;
 import com.example.orbis_gs.exceptions.ResourceNotFoundException;
 import com.example.orbis_gs.model.Usuario;
+import com.example.orbis_gs.producer.UsuarioProducer;
 import com.example.orbis_gs.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +21,7 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final BCryptPasswordEncoder passwordEncoder;
+    private final UsuarioProducer logProducer;
 
     private UsuarioDTO convertToDTO(Usuario usuario) {
         UsuarioDTO dto = new UsuarioDTO();
@@ -32,19 +34,25 @@ public class UsuarioService {
     }
 
     @Transactional
-    public void createUsuario(UsuarioDTO usuarioDTO) {
+    public UsuarioDTO createUsuario(UsuarioDTO usuarioDTO) {
         if (usuarioRepository.existsByEmail(usuarioDTO.getEmail())) {
-            throw new EmailAlreadyExistsException("Já existe um usuário com este e-mail.");
+            throw new RuntimeException("Já existe um usuário com este e-mail.");
         }
 
-        Usuario usuario = new Usuario();
-        usuario.setNome(usuarioDTO.getNome());
-        usuario.setSobrenome(usuarioDTO.getSobrenome());
-        usuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
-        usuario.setCep(usuarioDTO.getCep());
-        usuario.setEmail(usuarioDTO.getEmail());
+        Usuario entity = new Usuario();
+        entity.setNome(usuarioDTO.getNome());
+        entity.setSobrenome(usuarioDTO.getSobrenome());
+        entity.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
+        entity.setCep(usuarioDTO.getCep());
+        entity.setEmail(usuarioDTO.getEmail());
+        usuarioRepository.save(entity);
 
-        usuarioRepository.save(usuario);
+
+        UsuarioDTO salvoDTO = convertToDTO(entity);
+
+        logProducer.enviarLogCadastro(salvoDTO);
+
+        return salvoDTO;
     }
 
     @Transactional

@@ -1,4 +1,5 @@
-package com.example.orbis_gs.dto;
+package com.example.dto;
+
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
