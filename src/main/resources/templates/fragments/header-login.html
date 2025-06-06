@@ -6,7 +6,7 @@
     <header class="header-orbis">
         <div class="header-content">
             <div class="logo-header">
-                <img th:src="@{images/orbis.png}" alt="Orbis Logo" />
+                <img th:src="@{/images/orbis.png}" alt="Orbis Logo" />
                 <span class="app-name" th:text="#{app.name}">Orbis</span>
             </div>
 
@@ -16,7 +16,7 @@
                     <li><a th:href="@{/match}" th:text="#{menu.match}">Match</a></li>
                     <li><a th:href="@{/doacoes}" th:text="#{menu.doacoes}">Doações</a></li>
                     <li><a th:href="@{/emergencia}" th:text="#{menu.emergencias}">Emergências</a></li>
-                    <li><a th:href="@{/edit-user}" th:text="#{menu.editar-usuario}">Editar Usuário</a></li>
+                    <a th:href="@{/usuarios/editarUsuario/{id}(id=${usuarioDTO.usuarioId})}">Editar</a>
                     <li><a th:href="@{/usuario/logout}" th:text="#{menu.logout}">Sair</a></li>
                 </ul>
             </nav>

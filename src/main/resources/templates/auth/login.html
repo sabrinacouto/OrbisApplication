@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{usuario.login.titulo}">Login</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body class="login-body">
 <div th:replace="~{fragments/header :: header}"></div>
+<div class="form-container">
 <div class="login-container">
+
+    <div class="logo-form">
+    <img class="logo-img" th:src="@{/images/orbis.png}" alt="Orbis Logo" />
+    </div>
     <h1 th:text="#{usuario.login.titulo}" class="login-title">Login de Usuário</h1>
 
     <p th:if="${erro}" th:text="${erro}" class="login-error"></p>
@@ -27,6 +32,7 @@
             <button type="submit" th:text="#{usuario.botao.entrar}" class="login-button">Entrar</button>
         </div>
     </form>
+</div>
 </div>
 
 </body>

@@ -240,11 +240,7 @@ body {
 
 body.login-body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #6C63FF, #42A5F5);
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .login-container {
@@ -254,6 +250,9 @@ body.login-body {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     width: 100%;
     max-width: 400px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .login-title {
@@ -310,6 +309,19 @@ body.login-body {
     margin-bottom: 1rem;
 }
 
-body.cadastro-body {
-    background: linear-gradient(135deg, #42A5F5, #6C63FF);
+.form-container{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 2rem;
+}
+
+.logo-img {
+ height: 70px;
+}
+
+.logo-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

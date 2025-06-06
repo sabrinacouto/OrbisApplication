@@ -15,7 +15,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/usuarios/login", "/usuarios/cadastro", "/css/**", "/js/**", "/images/**", "/webjars/**", "/public/**")
                         .permitAll()
-                        .requestMatchers("/home", "/doacoes/", "/emergencias/", "/match-ajuda/")
+                        .requestMatchers("/usuarios/editarUsuario/**", "/usuarios/deletarUsuario/**", "/home", "/doacoes/**", "/emergencias/**", "/match-ajuda/**")
                         .hasRole("USUARIO")
                         .anyRequest().authenticated()
                 )
