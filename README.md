@@ -17,7 +17,7 @@ A plataforma é composta por duas aplicações Spring Boot independentes: uma pr
 
 ## 👩‍💻 Desenvolvedores
 
-- [Sabrina Couto](https://github.com/sabrinacouto) - Backend Developer & QA - RM552728 -2TDSPR
+- [Sabrina Couto](https://github.com/sabrinacouto) - Backend Developer & QA - RM552728 - 2TDSPR
 - [Juliana Mo.](https://github.com/julianamo93) - Solutions Data Architect & Cloud - RM554113 - 2TDSZ
 - [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590 - 2TDSZ
 
