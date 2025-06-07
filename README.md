@@ -17,9 +17,9 @@ A plataforma é composta por duas aplicações Spring Boot independentes: uma pr
 
 ## 👩‍💻 Desenvolvedores
 
-- [Sabrina Couto](https://github.com/sabrinacouto) - Backend Developer & QA - RM552728
-- [Juliana Mo.](https://github.com/julianamo93) - Solutions Data Architect & Cloud - RM554113
-- [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590
+- [Sabrina Couto](https://github.com/sabrinacouto) - Backend Developer & QA - RM552728 -2TDSPR
+- [Juliana Mo.](https://github.com/julianamo93) - Solutions Data Architect & Cloud - RM554113 - 2TDSZ
+- [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590 - 2TDSZ
 
 Projeto desenvolvido por alunos do segundo ano do curso de Análise e Desenvolvimento de Sistemas da FIAP, para a Global Solution 01/2025.
 
