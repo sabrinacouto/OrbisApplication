@@ -97,6 +97,7 @@ orbis.broker.routingkey.usuario.created=usuario.created.routingkey
 - ☁️ Acesso RabbitMQ (CloudAMQP): https://fly.rmq.cloudamqp.com/#/
 
 ## Vídeo Pitch
+https://www.youtube.com/watch?v=A1gLzrINBCg
 
 ## Vídeo da Aplicação
 https://www.youtube.com/watch?v=wWm955Ofms8
