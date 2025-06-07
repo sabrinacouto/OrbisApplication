@@ -21,6 +21,8 @@ A plataforma é composta por duas aplicações Spring Boot independentes: uma pr
 - [Juliana Mo.](https://github.com/julianamo93) - Solutions Data Architect & Cloud - RM554113
 - [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590
 
+Projeto desenvolvido por alunos do segundo ano do curso de Análise e Desenvolvimento de Sistemas da FIAP, para a Global Solution 01/2025.
+
 ---
 
 ## 💾 Rodando o Projeto Localmente
