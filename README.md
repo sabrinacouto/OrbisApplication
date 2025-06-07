@@ -17,9 +17,9 @@ A plataforma é composta por duas aplicações Spring Boot independentes: uma pr
 
 ## 👩‍💻 Desenvolvedores
 
-- [Juliana Mo.](https://github.com/julianamo93) - Modelagem e Banco de Dados - RM554113
-- [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590
 - [Sabrina Couto](https://github.com/sabrinacouto) - Backend Developer & QA - RM552728
+- [Juliana Mo.](https://github.com/julianamo93) - Solutions Data Architect & Cloud - RM554113
+- [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590
 
 ---
 
