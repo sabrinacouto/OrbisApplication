@@ -16,6 +16,7 @@ import java.time.LocalDate;
 public class OfertaDoacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "oferta_id")
     private Long ofertaId;
 
     @NotBlank

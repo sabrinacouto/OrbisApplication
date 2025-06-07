@@ -25,6 +25,7 @@ public class PedidoAjudaDTO {
 
     private String status = "pendente";
 
+
     private Usuario usuario;
 }
 

@@ -27,9 +27,6 @@ dependencies {
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc11:23.3.0.23.09'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-
-	implementation 'org.springframework.boot:spring-boot-starter-amqp'
-
 	implementation 'org.springframework.boot:spring-boot-starter'
 
 
@@ -38,10 +35,22 @@ dependencies {
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.mockito:mockito-core:5.12.0'
 	testImplementation 'org.springframework.security:spring-security-test'
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+
+
+	testImplementation 'org.mockito:mockito-core:5.12.0'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:rabbitmq'
+	testImplementation 'com.h2database:h2:2.1.214'
+
+
+	testImplementation 'org.junit.platform:junit-platform-suite-api:1.10.0'
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+
+
+
 
 }
 

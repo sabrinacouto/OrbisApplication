@@ -23,5 +23,7 @@ public class UsuarioProducer {
         rabbitTemplate.convertAndSend(exchange, routingKey, usuarioDTO);
         System.out.println("Log enviado : " + usuarioDTO);
     }
+
+
 }
 

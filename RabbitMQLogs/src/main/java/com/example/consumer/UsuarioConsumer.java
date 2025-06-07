@@ -18,6 +18,5 @@ public class UsuarioConsumer {
         System.out.println("   Nome: " + usuario.getNome());
         System.out.println("   Email: " + usuario.getEmail());
         System.out.println("   ID: " + usuario.getUsuarioId());
-        System.out.println("   Timestamp: " + usuario.getTimestamp());
     }
 }

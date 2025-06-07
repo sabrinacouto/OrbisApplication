@@ -25,6 +25,32 @@ body {
   font-weight: 600;
 }
 
+.hello {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.central-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.language-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.language-brasil{
+border-left: 1px solid #0000;
+}
+
 .notification-icon {
   font-size: 1.5rem;
   cursor: pointer;

@@ -16,6 +16,7 @@ import java.time.LocalDate;
 public class PedidoAjuda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pedido_id")
     private Long pedidoId;
 
     @NotBlank

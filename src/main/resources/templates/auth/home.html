@@ -7,21 +7,25 @@
 </head>
 <body>
 <div th:replace="~{fragments/header-login :: header-login}"></div>
-<header class="header">
-    <h1>
-        <span th:text="#{home.ola}">Olá</span>,
-        <strong th:text="${usuario.nome}">Usuário</strong>
-    </h1>
-</header>
 
-<main class="sos-container">
-    <p>
-        <span th:utext="#{home.ajudaTexto}">
-            A ajuda está a um clique de distância! Clique no <span class='highlight'>SOS</span> para pedir ajuda.
-        </span>
-    </p>
-    <button class="sos-button" th:text="#{home.botao.sos}">SOS</button>
-</main>
+<div class="central-container">
+    <div class="hello">
+        <h1>
+            <span th:text="#{home.ola}">Olá</span>,
+            <strong th:text="${usuario.nome}">Usuário</strong>
+        </h1>
+    </div>
+
+    <main class="sos-container">
+        <p>
+            <span th:utext="#{home.ajudaTexto}">
+                A ajuda está a um clique de distância! Clique no <span class='highlight'>SOS</span> para pedir ajuda.
+            </span>
+        </p>
+        <button class="sos-button" th:text="#{home.botao.sos}">SOS</button>
+    </main>
+</div>
+
 
 </body>
 </html>

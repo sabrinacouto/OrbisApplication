@@ -36,7 +36,7 @@ public class UsuarioService {
     @Transactional
     public UsuarioDTO createUsuario(UsuarioDTO usuarioDTO) {
         if (usuarioRepository.existsByEmail(usuarioDTO.getEmail())) {
-            throw new RuntimeException("Já existe um usuário com este e-mail.");
+            throw new EmailAlreadyExistsException("Já existe um usuário com este e-mail.");
         }
 
         Usuario entity = new Usuario();
@@ -48,7 +48,9 @@ public class UsuarioService {
         usuarioRepository.save(entity);
 
 
-        UsuarioDTO salvoDTO = convertToDTO(entity);
+        Usuario savedEntity = usuarioRepository.save(entity);
+        UsuarioDTO salvoDTO = convertToDTO(savedEntity);
+
 
         logProducer.enviarLogCadastro(salvoDTO);
 
@@ -56,7 +58,7 @@ public class UsuarioService {
     }
 
     @Transactional
-    public void updateUsuario(Long id, UsuarioDTO usuarioDTO) {
+    public UsuarioDTO updateUsuario(Long id, UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuário não encontrado com ID: " + id));
 
@@ -72,17 +74,10 @@ public class UsuarioService {
         if (usuarioDTO.getSobrenome() != null) usuario.setSobrenome(usuarioDTO.getSobrenome());
         if (usuarioDTO.getCep() != null) usuario.setCep(usuarioDTO.getCep());
         if (usuarioDTO.getSenha() != null) usuario.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
-
-
-        System.out.println("Atualizando usuário ID: " + id);
-        System.out.println("Novo nome: " + usuarioDTO.getNome());
-        System.out.println("Novo sobrenome: " + usuarioDTO.getSobrenome());
-        System.out.println("Novo email: " + usuarioDTO.getEmail());
-        System.out.println("Novo cep: " + usuarioDTO.getCep());
-
-
+        
 
         usuarioRepository.save(usuario);
+        return usuarioDTO;
     }
 
     public List<UsuarioDTO> getAllUsuarios() {

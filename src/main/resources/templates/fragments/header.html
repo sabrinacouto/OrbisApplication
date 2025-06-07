@@ -9,9 +9,6 @@
                 <img th:src="@{/images/orbis.png}" alt="Orbis Logo" />
             </div>
 
-            <div class="language-selector">
-                <a href="?lang=pt">Português</a> | <a href="?lang=en">English</a>
-            </div>
 
             <nav class="nav-menu">
                 <ul>
@@ -19,6 +16,13 @@
                     <li><a th:href="@{/usuarios/cadastro}" class="btn-cadastro" th:text="#{menu.cadastro}">Cadastro</a></li>
                 </ul>
             </nav>
+
+            <div class="language-selector">
+                <a href="?lang=pt"><img src="/images/bandeira-brasil.png" alt="Português"  class="language-brasil" width="35" height="35"></a>
+
+                <a href="?lang=en"><img src="/images/bandeira-ru.png" alt="English" width="40" height="40"></a>
+
+            </div>
         </div>
     </header>
 </div>
