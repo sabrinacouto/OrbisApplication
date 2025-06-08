@@ -93,7 +93,7 @@ orbis.broker.routingkey.usuario.created=usuario.created.routingkey
 ## 📦 Deploys
 
 - 🔗 Repositório GitHub: https://github.com/sabrinacouto/OrbisApplication
-- 🚀 Deploy da aplicação: https://orbis-backend.fly.dev
+- 🚀 Deploy da aplicação: https://orbis-rm552728.azurewebsites.net/
 - ☁️ Acesso RabbitMQ (CloudAMQP): https://fly.rmq.cloudamqp.com/#/
 
 ## Vídeo Pitch
