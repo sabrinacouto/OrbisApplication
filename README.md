@@ -17,11 +17,30 @@ A plataforma é composta por duas aplicações Spring Boot independentes: uma pr
 
 ## 👩‍💻 Desenvolvedores
 
-- [Sabrina Couto](https://github.com/sabrinacouto) - Backend Developer & QA - RM552728
-- [Juliana Mo.](https://github.com/julianamo93) - Solutions Data Architect & Cloud - RM554113
-- [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590
+- [Sabrina Couto](https://github.com/sabrinacouto) - Backend Developer & QA - RM552728 - 2TDSPR
+- [Juliana Mo.](https://github.com/julianamo93) - Solutions Data Architect & Cloud - RM554113 - 2TDSZ
+- [Kevin Nobre](https://github.com/KevinNobre) - FullStack Developer - RM552590 - 2TDSZ
+
+Projeto desenvolvido por alunos do segundo ano do curso de Análise e Desenvolvimento de Sistemas da FIAP, para a Global Solution 01/2025.
 
 ---
+
+### Configurar o Projeto no IntelliJ IDEA
+<ul>
+  <li>Selecione a opção "Open" e navegue até o diretório do projeto Smartooth AI clonado.</li>
+  <li>Em Project Structure garanta que o SDK esteja para o Java 17.</li>
+  <li>Verifique no IntelliJ se a aba do Gradle está presente na barra lateral.</li>
+  <li>Caso o projeto não seja automaticamente reconhecido como Gradle, abra o arquivo build.gradle e aceite a importação do Gradle quando o IntelliJ perguntar.</li>
+</ul>
+
+### Configurar o JDBC para o Oracle Database
+Configurar as credenciais do banco de dados Oracle no application.properties:
+  ```bash
+  spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/XEPDB1
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+```
 
 ## 💾 Rodando o Projeto Localmente
 
@@ -37,16 +56,26 @@ https://github.com/sabrinacouto/OrbisApplication.git
 
 | Método  | Endpoint                  | Descrição                       |
 |---------|---------------------------|----------------------------------|
-| GET     | `/usuario`                | Lista todos os usuários         |
-| POST    | `/usuario/cadastro`       | Cadastra novo usuário           |
-| GET     | `/usuario/editar/{id}`    | Formulário de edição            |
-| PATCH   | `/usuario/editar/{id}`    | Atualiza dados do usuário       |
-| DELETE  | `/usuario/deletar/{id}`   | Remove usuário                  |
+| GET     | `/usuarios/lista`          | Lista todos os usuários         |
+| POST    | `/usuarios/cadastro`       | Cadastra novo usuário           |
+| GET     | `/usuarios/editar/{id}`    | Formulário de edição            |
+| PATCH   | `/usuarios/editar/{id}`    | Atualiza dados do usuário       |
+| DELETE  | `/usuarios/deletarUsuario/{id}`   | Remove usuário                  |
 
 
 ## 📬 Mensageria com RabbitMQ
 
 O ORBIS utiliza RabbitMQ para comunicação assíncrona entre serviços, garantindo escalabilidade e desacoplamento. A aplicação produtora envia mensagens para uma fila específica, e a aplicação consumidora escuta e processa essas mensagens.
+
+
+### Verificação do envio de mensagens via RabbitMQ:
+A cada ação realizada (cadastro, edição ou exclusão), uma mensagem é enviada para o sistema de mensageria RabbitMQ.
+Para acompanhar as mensagens enviadas:
+
+- Acesse o painel do CloudAMQP: https://fly.rmq.cloudamqp.com/#/
+- Faça login com as credenciais.
+- Localize a fila.
+- Verifique se há mensagens sendo enviadas para a fila conforme as ações executadas na aplicação.
 
 ### 🔧 Configuração no `application.properties` (rodando localmente)
 
@@ -61,7 +90,50 @@ orbis.broker.exchange.usuario=usuarioExchange
 orbis.broker.routingkey.usuario.created=usuario.created.routingkey
 ```
 
-ou acesse o link https://fly.rmq.cloudamqp.com/#/
+## 📦 Deploys
+
+- 🔗 Repositório GitHub: https://github.com/sabrinacouto/OrbisApplication
+- 🚀 Deploy da aplicação: https://orbis-rm552728.azurewebsites.net/
+- ☁️ Acesso RabbitMQ (CloudAMQP): https://fly.rmq.cloudamqp.com/#/
+
+## Vídeo Pitch
+https://www.youtube.com/watch?v=A1gLzrINBCg
+
+## Vídeo da Aplicação
+https://www.youtube.com/watch?v=wWm955Ofms8
+
+## 📍 Dependências
+```gradle
+dependencies {
+implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11:23.3.0.23.09'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter'
+
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	testImplementation 'org.mockito:mockito-core:5.12.0'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:rabbitmq'
+	testImplementation 'com.h2database:h2:2.1.214'
+	testImplementation 'org.junit.platform:junit-platform-suite-api:1.10.0'
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+}
+```
+
+
+  
+
 
 
 
