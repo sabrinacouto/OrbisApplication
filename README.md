@@ -56,11 +56,11 @@ https://github.com/sabrinacouto/OrbisApplication.git
 
 | Método  | Endpoint                  | Descrição                       |
 |---------|---------------------------|----------------------------------|
-| GET     | `/usuario`                | Lista todos os usuários         |
-| POST    | `/usuario/cadastro`       | Cadastra novo usuário           |
-| GET     | `/usuario/editar/{id}`    | Formulário de edição            |
-| PATCH   | `/usuario/editar/{id}`    | Atualiza dados do usuário       |
-| DELETE  | `/usuario/deletar/{id}`   | Remove usuário                  |
+| GET     | `/usuarios/lista`          | Lista todos os usuários         |
+| POST    | `/usuarios/cadastro`       | Cadastra novo usuário           |
+| GET     | `/usuarios/editar/{id}`    | Formulário de edição            |
+| PATCH   | `/usuarios/editar/{id}`    | Atualiza dados do usuário       |
+| DELETE  | `/usuarios/deletarUsuario/{id}`   | Remove usuário                  |
 
 
 ## 📬 Mensageria com RabbitMQ
