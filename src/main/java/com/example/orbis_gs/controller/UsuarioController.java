@@ -37,6 +37,11 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/lista")
+    public String listarUsuarios(Model model) {
+        model.addAttribute("usuarios", usuarioService.getAllUsuarios());
+        return "auth/home";
+    }
 
     @GetMapping("/login")
     public String mostrarLogin(Model model) {
